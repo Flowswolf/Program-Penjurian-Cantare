@@ -6,188 +6,168 @@
     <style>
         @page {
             size: A4 landscape;
-            margin: 1.5cm;
+            margin: 1.0cm;
         }
         body { 
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
             margin: 0; 
             color: #1c1c1c; 
-            line-height: 1.5;
-            background-color: #ffffff;
+            font-size: 11px;
         }
         
-        .header { 
-            text-align: center; 
+        .header-table {
+            width: 100%;
             border-bottom: 2px solid #0a2d5e;
-            padding-bottom: 10px; 
-            margin-bottom: 20px; 
+            padding-bottom: 6px;
+            margin-bottom: 8px;
         }
         
-        .header h2 {
-            margin: 0 0 5px 0;
+        .header-text h1 {
+            margin: 0;
             color: #0a2d5e;
-            font-size: 22px;
-            letter-spacing: 1px;
+            font-size: 20px;
             text-transform: uppercase;
         }
         
-        .header p {
-            margin: 0;
-            font-size: 14px;
-            font-weight: 600;
+        .header-text p {
+            margin: 4px 0 0 0;
+            font-size: 13px;
+            font-weight: bold;
             color: #555;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
-        
+
         .info-table { 
-            margin-bottom: 20px; 
-            font-size: 14px; 
-            width: 50%; 
-            border-collapse: collapse;
+            margin-bottom: 10px; 
+            font-size: 12px; 
+            width: 60%;
         }
         
-        .info-table td { 
-            padding: 4px 10px 4px 0; 
-            vertical-align: top;
+        .info-table td {
+            padding: 2px 0;
         }
         
-        .info-table .label {
+        .info-table td.label {
             font-weight: bold;
-            width: 120px;
-            color: #333;
+            width: 130px;
         }
         
         .judges-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 8px 0;
-            margin-left: -8px; /* Offset the first column's left spacing */
+            width: 90%;
+            margin: 0 auto;
+            table-layout: fixed;
         }
         
         .judge-cell {
             vertical-align: top;
-            border: 1px solid #888;
-            padding: 0;
-            width: 16%;
+            padding: 0 3px;
         }
 
-        .summary-cell {
-            vertical-align: top;
-            border: 2px solid #0a2d5e;
-            padding: 0;
-            background-color: #f9fbff;
-            width: 18%;
-        }
-
-        .inner-table {
+        .score-box {
             width: 100%;
+            border: 1.5px solid #333;
             border-collapse: collapse;
-            text-align: center;
         }
-
-        .inner-table td {
-            padding: 8px 6px;
+        
+        .score-box td {
+            border: 1px solid #888;
+            padding: 6px 4px;
+            font-size: 10px;
         }
 
         .judge-name-header {
-            border-bottom: 1px solid #888;
-            font-weight: bold;
             background-color: #eaeaea;
-            font-size: 13px;
-        }
-
-        .score-row td {
-            font-size: 12px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .score-label {
-            text-align: left;
-        }
-
-        .score-value {
-            text-align: right;
             font-weight: bold;
-            font-size: 13px;
-        }
-
-        .avg-row td {
-            border-top: 1px solid #888;
-            font-weight: bold;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-
-        .signature-box {
-            padding-top: 40px;
-            padding-bottom: 10px;
-        }
-
-        .signature-line {
-            border-bottom: 1px solid #333;
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .signature-text {
-            font-size: 10px;
-            margin-top: 4px;
-            color: #555;
-        }
-
-        .summary-header {
-            border-bottom: 2px solid #0a2d5e;
-            font-weight: bold;
-            background-color: #0a2d5e;
-            color: white;
-            font-size: 14px;
-            padding: 10px 5px !important;
-        }
-
-        .summary-score-row td {
-            font-size: 13px;
-            padding: 10px 8px;
+            text-align: center;
+            font-size: 11px;
+            border-bottom: 1.5px solid #333 !important;
+            padding: 4px !important;
         }
         
-        .final-score-row td {
-            border-top: 2px solid #0a2d5e;
-            font-size: 16px;
+        .score-value {
+            text-align: center;
             font-weight: bold;
-            padding: 12px 8px;
+            width: 40px;
+            font-size: 11px;
+        }
+        
+        .total-row td {
+            background-color: #f9fbff;
+            font-weight: bold;
+            border-top: 1.5px solid #333 !important;
         }
 
-        .medal-box {
-            padding: 20px 10px !important;
+        .final-score-box {
+            border: 2px solid #0a2d5e;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        
+        .final-score-box td {
+            border: 1px solid #ccc;
+            padding: 6px;
+            font-size: 11px;
+        }
+        
+        .final-score-label {
+            background-color: #f4f4f4;
             font-weight: bold;
-            font-size: 22px;
-            border-top: 2px solid #0a2d5e;
+        }
+        
+        .medal-cell {
             text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .signature-table {
+            width: 100%;
+            table-layout: fixed;
+            margin-top: 10px;
         }
 
-        .artistic-director {
-            margin-top: 30px;
-            float: right;
-            width: 200px;
+        .signature-cell {
+            vertical-align: top;
             text-align: center;
+            padding: 80px 10px 0 10px;
+        }
+
+        .footer-legend {
+            margin-top: 10px;
+            font-size: 8px;
+            color: #666;
+            text-align: center;
+            border-top: 1px solid #ccc;
+            padding-top: 5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h2>PETRA CANTARE INTERNATIONAL CHORAL FESTIVAL 2027</h2>
-        <p>Official Adjudication Score Sheet</p>
-    </div>
+    <table class="header-table">
+        <tr>
+            <td class="header-text" valign="middle">
+                <h1>PETRA CANTARE INTERNATIONAL CHORAL FESTIVAL 2027</h1>
+                <p>Official Adjudication Score Sheet</p>
+            </td>
+            <td align="right" valign="middle">
+                <!-- Logos -->
+                <img src="img/logo-cantare.png" height="45" style="margin-right: 15px;">
+                <img src="img/Logo PPMG reg.png" height="45" style="margin-right: 15px;">
+                <img src="img/org-logo-3.png" height="45">
+            </td>
+        </tr>
+    </table>
 
     <table class="info-table">
         <tr>
             <td class="label">Name of Choir</td>
-            <td>: {{ nama_choir }}</td>
+            <td>: <strong>{{ nama_choir }}</strong></td>
         </tr>
         <tr>
             <td class="label">Category</td>
-            <td>: {{ kategori }}</td>
+            <td>: <strong>{{ kategori }}</strong></td>
         </tr>
     </table>
 
@@ -195,72 +175,86 @@
         <tr>
             {% for juri in list_juri %}
             <td class="judge-cell">
-                <table class="inner-table">
+                <table class="score-box">
                     <tr>
                         <td colspan="2" class="judge-name-header">{{ juri.nama }}</td>
                     </tr>
-                    <tr class="score-row">
-                        <td class="score-label">Intonation</td>
+                    <tr>
+                        <td>Intonation</td>
                         <td class="score-value">{{ juri.intonation }}</td>
                     </tr>
-                    <tr class="score-row">
-                        <td class="score-label">Vocal Quality</td>
+                    <tr>
+                        <td>Vocal Quality</td>
                         <td class="score-value">{{ juri.vq }}</td>
                     </tr>
-                    <tr class="score-row">
-                        <td class="score-label">Fidelity to Score</td>
+                    <tr>
+                        <td>Fidelity to Score</td>
                         <td class="score-value">{{ juri.fidelity }}</td>
                     </tr>
-                    <tr class="score-row">
-                        <td class="score-label">Artistic Impression</td>
+                    <tr>
+                        <td>Artistic Impression</td>
                         <td class="score-value">{{ juri.artistic }}</td>
                     </tr>
-                    <tr class="avg-row">
-                        <td class="score-label">Average</td>
+                    <tr class="total-row">
+                        <td align="right">Total Score</td>
                         <td class="score-value" style="color: #0a2d5e;">{{ juri.total }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="signature-box">
-                            <div class="signature-line"></div>
-                            <div class="signature-text">Signature</div>
-                        </td>
                     </tr>
                 </table>
             </td>
             {% endfor %}
-            
-            <td class="summary-cell">
-                <table class="inner-table">
-                    <tr>
-                        <td colspan="2" class="summary-header">FINAL RESULT</td>
-                    </tr>
-                    <tr class="summary-score-row">
-                        <td class="score-label">Total Average</td>
-                        <td class="score-value">{{ total_average }}</td>
-                    </tr>
-                    <tr class="summary-score-row">
-                        <td class="score-label">Penalty</td>
-                        <td class="score-value">{{ penalty }}</td>
-                    </tr>
-                    <tr class="final-score-row">
-                        <td class="score-label">FINAL SCORE</td>
-                        <td class="score-value" style="color: #0a2d5e;">{{ final_score }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="medal-box" style="background-color: {{ medal_color }}; color: {{ medal_text_color }};">
-                            {{ medal }}<br><span style="font-size: 12px; font-weight: normal; color: #333;">MEDAL</span>
-                        </td>
-                    </tr>
-                </table>
-            </td>
         </tr>
     </table>
 
-    <div class="artistic-director">
-        <div style="border-bottom: 1px solid #333; margin-bottom: 5px;"></div>
-        <div style="font-weight: bold; font-size: 14px; color: #333;">Artistic Director</div>
+    <!-- Final Score centered below the judges using dummy columns for xhtml2pdf -->
+    <table width="100%" style="margin-top: 10px;">
+        <tr>
+            <!-- Kolom kiri untuk mendorong ke tengah -->
+            <td></td>
+            
+            <td width="170" align="center">
+                <table class="final-score-box" width="100%">
+                    <tr>
+                        <td class="final-score-label">Total Average</td>
+                        <td align="center" width="80"><b>{{ total_average }}</b></td>
+                    </tr>
+                    <tr>
+                        <td class="final-score-label">Time Penalty</td>
+                        <td align="center"><b>{{ penalty }}</b></td>
+                    </tr>
+                    <tr>
+                        <td class="final-score-label" style="border-top: 2px solid #0a2d5e;">FINAL SCORE</td>
+                        <td align="center" style="border-top: 2px solid #0a2d5e;"><b><font size="4" color="#0a2d5e">{{ final_score }}</font></b></td>
+                    </tr>
+                    <tr>
+                        <td class="final-score-label" style="background-color: {{ medal_color }}; color: {{ medal_text_color }};">Diplomas</td>
+                        <td class="medal-cell" style="background-color: {{ medal_color }}; color: {{ medal_text_color }};">{{ medal }}</td>
+                    </tr>
+                </table>
+            </td>
+            
+            <!-- Kolom kanan -->
+            <td></td>
+        </tr>
+    </table>
+
+    <!-- Signatures below the Final Score -->
+    <table class="signature-table">
+        <tr>
+            {% for juri in list_juri %}
+            <td class="signature-cell">
+                <div style="border-top: 1px solid #333333; width: 85%; margin: 0 auto; padding-top: 2px;">
+                    <div style="font-size: 11px; font-weight: bold; color: #444; margin-top: 0px;">
+                        {{ juri.nama }}
+                    </div>
+                </div>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <div class="footer-legend">
+        Gold A: 90 - 100 | Gold B: 85 - 89.99 | Gold C: 80 - 84.99 | Silver A: 75 - 79.99 | Silver B: 70 - 74.99 | Silver C: 65 - 69.99 | Bronze A: 60 - 64.99 | Bronze B: 55 - 59.99 | Bronze C: 40 - 54.99
     </div>
-    <div style="clear: both;"></div>
 
 </body>
 </html>
