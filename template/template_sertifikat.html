@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Penilaian Juri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .info-table {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .info-table td {
+            padding: 4px 10px;
+        }
+        .score-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .score-table th, .score-table td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .score-table th {
+            background-color: #f2f2f2;
+        }
+        .summary-box {
+            float: right;
+            width: 300px;
+            border: 2px solid #333;
+            padding: 10px;
+        }
+        .summary-box table {
+            width: 100%;
+        }
+        .summary-box td {
+            padding: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Lomba -->
+    <div class="header">
+        <h2>PETRA CANTARE INTERNATIONAL CHORAL FESTIVAL 2027</h2>
+        <p>Official Adjudication Score Sheet</p>
+    </div>
+
+    <!-- Informasi Paduan Suara -->
+    <table class="info-table">
+        <tr>
+            <td><strong>Name of Choir</strong></td>
+            <td>: {{ nama_choir }}</td>
+        </tr>
+        <tr>
+            <td><strong>Category</strong></td>
+            <td>: {{ kategori }}</td>
+        </tr>
+    </table>
+
+    <!-- Tabel Rekap Nilai Juri (Contoh Sederhana) -->
+    <table class="score-table">
+        <thead>
+            <tr>
+                <th>Adjudicator</th>
+                <th>Intonation</th>
+                <th>Vocal Quality</th>
+                <th>Fidelity to Score</th>
+                <th>Artistic Impression</th>
+                <th>Total Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Juri 1 (Lim Ai Hooi)</td>
+                <td>{{ j1_into }}</td>
+                <td>{{ j1_vq }}</td>
+                <td>{{ j1_fidel }}</td>
+                <td>{{ j1_art }}</td>
+                <td>{{ j1_total }}</td>
+            </tr>
+            <!-- Nanti baris juri 2 sampai 5 bisa dilanjutkan di sini -->
+        </tbody>
+    </table>
+
+    <!-- Kotak Hasil Akhir di Pojok Bawah -->
+    <div class="summary-box">
+        <table>
+            <tr>
+                <td>TOTAL AVERAGE</td>
+                <td>: {{ total_average }}</td>
+            </tr>
+            <tr>
+                <td>PENALTY</td>
+                <td>: {{ penalty }}</td>
+            </tr>
+            <tr>
+                <td>FINAL SCORE</td>
+                <td>: {{ final_score }}</td>
+            </tr>
+            <tr>
+                <td>MEDAL</td>
+                <td>: {{ medal }}</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

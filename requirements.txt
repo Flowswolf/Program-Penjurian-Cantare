@@ -1,0 +1,4 @@
+pandas
+openpyxl
+jinja2
+xhtml2pdf

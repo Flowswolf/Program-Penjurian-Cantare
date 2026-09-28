@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Penilaian Juri - {{ nama_choir }}</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 1.5cm;
+        }
+        body { 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            color: #1c1c1c; 
+            line-height: 1.5;
+            background-color: #ffffff;
+        }
+        
+        .header { 
+            text-align: center; 
+            border-bottom: 2px solid #0a2d5e;
+            padding-bottom: 10px; 
+            margin-bottom: 20px; 
+        }
+        
+        .header h2 {
+            margin: 0 0 5px 0;
+            color: #0a2d5e;
+            font-size: 22px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .header p {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .info-table { 
+            margin-bottom: 20px; 
+            font-size: 14px; 
+            width: 50%; 
+            border-collapse: collapse;
+        }
+        
+        .info-table td { 
+            padding: 4px 10px 4px 0; 
+            vertical-align: top;
+        }
+        
+        .info-table .label {
+            font-weight: bold;
+            width: 120px;
+            color: #333;
+        }
+        
+        .judges-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 8px 0;
+            margin-left: -8px; /* Offset the first column's left spacing */
+        }
+        
+        .judge-cell {
+            vertical-align: top;
+            border: 1px solid #888;
+            padding: 0;
+            width: 16%;
+        }
+
+        .summary-cell {
+            vertical-align: top;
+            border: 2px solid #0a2d5e;
+            padding: 0;
+            background-color: #f9fbff;
+            width: 18%;
+        }
+
+        .inner-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .inner-table td {
+            padding: 8px 6px;
+        }
+
+        .judge-name-header {
+            border-bottom: 1px solid #888;
+            font-weight: bold;
+            background-color: #eaeaea;
+            font-size: 13px;
+        }
+
+        .score-row td {
+            font-size: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .score-label {
+            text-align: left;
+        }
+
+        .score-value {
+            text-align: right;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .avg-row td {
+            border-top: 1px solid #888;
+            font-weight: bold;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .signature-box {
+            padding-top: 40px;
+            padding-bottom: 10px;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #333;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .signature-text {
+            font-size: 10px;
+            margin-top: 4px;
+            color: #555;
+        }
+
+        .summary-header {
+            border-bottom: 2px solid #0a2d5e;
+            font-weight: bold;
+            background-color: #0a2d5e;
+            color: white;
+            font-size: 14px;
+            padding: 10px 5px !important;
+        }
+
+        .summary-score-row td {
+            font-size: 13px;
+            padding: 10px 8px;
+        }
+        
+        .final-score-row td {
+            border-top: 2px solid #0a2d5e;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 8px;
+        }
+
+        .medal-box {
+            padding: 20px 10px !important;
+            font-weight: bold;
+            font-size: 22px;
+            border-top: 2px solid #0a2d5e;
+            text-align: center;
+        }
+
+        .artistic-director {
+            margin-top: 30px;
+            float: right;
+            width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>PETRA CANTARE INTERNATIONAL CHORAL FESTIVAL 2027</h2>
+        <p>Official Adjudication Score Sheet</p>
+    </div>
+
+    <table class="info-table">
+        <tr>
+            <td class="label">Name of Choir</td>
+            <td>: {{ nama_choir }}</td>
+        </tr>
+        <tr>
+            <td class="label">Category</td>
+            <td>: {{ kategori }}</td>
+        </tr>
+    </table>
+
+    <table class="judges-table">
+        <tr>
+            {% for juri in list_juri %}
+            <td class="judge-cell">
+                <table class="inner-table">
+                    <tr>
+                        <td colspan="2" class="judge-name-header">{{ juri.nama }}</td>
+                    </tr>
+                    <tr class="score-row">
+                        <td class="score-label">Intonation</td>
+                        <td class="score-value">{{ juri.intonation }}</td>
+                    </tr>
+                    <tr class="score-row">
+                        <td class="score-label">Vocal Quality</td>
+                        <td class="score-value">{{ juri.vq }}</td>
+                    </tr>
+                    <tr class="score-row">
+                        <td class="score-label">Fidelity to Score</td>
+                        <td class="score-value">{{ juri.fidelity }}</td>
+                    </tr>
+                    <tr class="score-row">
+                        <td class="score-label">Artistic Impression</td>
+                        <td class="score-value">{{ juri.artistic }}</td>
+                    </tr>
+                    <tr class="avg-row">
+                        <td class="score-label">Average</td>
+                        <td class="score-value" style="color: #0a2d5e;">{{ juri.total }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="signature-box">
+                            <div class="signature-line"></div>
+                            <div class="signature-text">Signature</div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            {% endfor %}
+            
+            <td class="summary-cell">
+                <table class="inner-table">
+                    <tr>
+                        <td colspan="2" class="summary-header">FINAL RESULT</td>
+                    </tr>
+                    <tr class="summary-score-row">
+                        <td class="score-label">Total Average</td>
+                        <td class="score-value">{{ total_average }}</td>
+                    </tr>
+                    <tr class="summary-score-row">
+                        <td class="score-label">Penalty</td>
+                        <td class="score-value">{{ penalty }}</td>
+                    </tr>
+                    <tr class="final-score-row">
+                        <td class="score-label">FINAL SCORE</td>
+                        <td class="score-value" style="color: #0a2d5e;">{{ final_score }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="medal-box" style="background-color: {{ medal_color }}; color: {{ medal_text_color }};">
+                            {{ medal }}<br><span style="font-size: 12px; font-weight: normal; color: #333;">MEDAL</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <div class="artistic-director">
+        <div style="border-bottom: 1px solid #333; margin-bottom: 5px;"></div>
+        <div style="font-weight: bold; font-size: 14px; color: #333;">Artistic Director</div>
+    </div>
+    <div style="clear: both;"></div>
+
+</body>
+</html>
